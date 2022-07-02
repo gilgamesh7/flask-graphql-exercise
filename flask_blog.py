@@ -1,5 +1,5 @@
-from webbrowser import get
-from flask import Flask, jsonify
+
+from flask import Flask, jsonify, request
 
 from data import all_authors, all_blogs, get_author, get_blog, update_blog
 
@@ -16,6 +16,13 @@ def route_all_blogs():
 @app.route('/blogs/<id>', methods=['GET'])
 def route_get_blog(id: str):
     return jsonify(get_blog(int(id)))
+
+
+@app.route('/blogs/<id>', methods=['POST'])
+def route_update_blog(id: str):
+    payload = request.get_json()
+
+    return(jsonify(update_blog(int(id), payload)))
 
 @app.route("/authors")
 def route_all_authors():
