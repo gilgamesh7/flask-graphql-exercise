@@ -15,7 +15,7 @@ def route_all_blogs():
 
 @app.route('/blogs/<id>', methods=['GET'])
 def route_get_blog(id: str):
-    return jsonify(all_blogs())
+    return jsonify(get_blog(int(id)))
 
 @app.route("/authors")
 def route_all_authors():
