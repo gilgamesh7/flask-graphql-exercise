@@ -1,10 +1,36 @@
-
 from flask import Flask, jsonify, request
 
-from data import all_authors, all_blogs, get_author, get_blog, update_blog
+from ariadne import graphql_sync
+from ariadne.constants import PLAYGROUND_HTML
+
+from schema.create import create_schema
+
+from data import all_authors, all_blogs, get_author, get_blog, update_blog , Blog, Author
 
 app = Flask(__name__)
 
+'''
+Graph QL
+'''
+@app.route('/graphql', methods=['GET'])
+def graphql_playground():
+    return PLAYGROUND_HTML, 200
+
+
+@app.route('/graphql', methods=['POST'])
+def graphql_server():
+    # GraphQL queries are always sent as POST
+    data = request.get_json()
+
+    schema = create_schema()
+    success, result = graphql_sync(schema, data, context_value=request, debug=app.debug)
+
+    status_code = 200 if success else 400
+    return jsonify(result), status_code
+
+'''
+Flask
+'''
 @app.route('/')
 def route_hello_world():
     return "Hello World"

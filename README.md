@@ -12,3 +12,35 @@ https://youtu.be/7ccdWqGgHaM
     "id" : 2,
     "title" : "I like this blog"
 }
+
+## GraphQL Queries
+1. To get blogs with subset of field
+```
+query{
+  blogs{
+    id
+    title
+    content
+  }
+}
+```
+2. List of authors :
+```
+query{
+  authors{
+    id
+    name
+    }
+  }
+```
+3. This will error out on author
+```
+query{
+  blogs{
+    id
+    title
+    content
+    author
+  }
+}
+```
