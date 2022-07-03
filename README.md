@@ -3,8 +3,9 @@
 ## Youtube video by Arjan
 https://youtu.be/7ccdWqGgHaM
 
-## Flask Update Blog
+## Flask Update Blog & Queries
 - POST : http://127.0.0.1:5000/blogs/2
+```
 - Body (JSON) : 
 {
     "author_id" : 2,
@@ -12,6 +13,11 @@ https://youtu.be/7ccdWqGgHaM
     "id" : 2,
     "title" : "I like this blog"
 }
+```
+- GET Blogs : http://127.0.0.1:5000/blogs
+- GET a Blog : http://127.0.0.1:5000/blogs/2
+- GET authors : http://127.0.0.1:5000/authors
+- GET an author : http://127.0.0.1:5000/authors/2
 
 ## GraphQL Queries
 1. To get blogs with subset of field
