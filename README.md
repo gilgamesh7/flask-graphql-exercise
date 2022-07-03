@@ -44,3 +44,18 @@ query{
   }
 }
 ```
+4. Get author and Blog details
+```
+query{
+  blogs{
+    id
+    title
+    content
+    author {
+      id
+      name
+    }
+  }
+}
+
+```
